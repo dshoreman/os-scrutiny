@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<form>
+    <field>
+        <id>endpoint</id>
+        <label>API Endpoint</label>
+        <hint>http://scrutiny:8080</hint>
+        <type>text</type>
+    </field>
+    <field>
+        <id>host</id>
+        <label>Host ID</label>
+        <help>Enter a name to identify this machine; used to group disks in Scrutiny.</help>
+        <type>text</type>
+    </field>
+    <field>
+        <id>debug</id>
+        <label>Debug</label>
+        <type>checkbox</type>
+        <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>
+    </field>
+</form>
