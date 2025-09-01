@@ -1,14 +1,24 @@
 <script>
 function setval(opt, val) {
-    document.getElementById(`scrutiny.settings.${opt}`).innerText = val;
+    document.getElementById(`scrutiny.settings.${opt}`).innerHTML = val;
 };
 
 (() => {
-    const form = mapDataToFormUI({'settings': '/api/scrutiny/settings/get'});
+    const form = mapDataToFormUI({'settings': '/api/scrutiny/settings/get'}),
+    installBtnData = 'data-endpoint="/api/scrutiny/service/download" data-label="Install"',
+    installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
 
     form.done((data) => {
         setval('SmartVersion', '{{ versions.smartctl }}');
-        setval('CollectorVersion', '{{ versions.scrutiny }}');
+        if ('{{ versions.scrutiny }}' != 'not detected') {
+            setval('CollectorVersion', '{{ versions.scrutiny }}');
+        } else {
+            setval('CollectorVersion', installBtn);
+
+            $('#install').SimpleActionButton({
+                onAction: (data) => setval('CollectorVersion', data['message'].replaceAll('\n', '<br>')),
+            });
+        }
     });
 })();
 </script>
