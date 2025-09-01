@@ -1,0 +1,10 @@
+<acl>
+    <page-services-scrutiny>
+        <name>Services: Scrutiny: Settings</name>
+        <description>Allow access to the Scrutiny plugin's settings</description>
+        <patterns>
+            <pattern>ui/scrutiny/settings</pattern>
+            <pattern>api/scrutiny/settings</pattern>
+        </patterns>
+    </page-services-scrutiny>
+</acl>
