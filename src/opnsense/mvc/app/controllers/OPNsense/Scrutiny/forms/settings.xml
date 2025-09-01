@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <form>
     <field>
+        <id>scrutiny.settings.SmartVersion</id>
+        <label>S.M.A.R.T. Version</label>
+        <type>info</type>
+    </field>
+    <field>
         <id>scrutiny.settings.ApiEndpoint</id>
         <label>API Endpoint</label>
         <hint>http://scrutiny:8080</hint>

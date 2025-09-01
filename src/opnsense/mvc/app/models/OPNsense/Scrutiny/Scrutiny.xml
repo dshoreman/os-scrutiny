@@ -3,6 +3,9 @@
     <mount>//OPNsense/scrutiny</mount>
     <items>
         <settings>
+            <SmartVersion type="TextField" volatile="true">
+                <Default>-</Default>
+            </SmartVersion>
             <ApiEndpoint type="TextField">
                 <Required>Y</Required>
             </ApiEndpoint>
