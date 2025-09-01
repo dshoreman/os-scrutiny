@@ -1,0 +1,5 @@
+<menu>
+    <Services>
+        <Scrutiny url="/ui/scrutiny/settings" cssClass="fa fa-glasses fa-fw" />
+    </Services>
+</menu>
