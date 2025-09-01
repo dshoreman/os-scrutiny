@@ -10,29 +10,37 @@ function setval(opt, val) {
 
     form.done((data) => {
         setval('SmartVersion', '{{ versions.smartctl }}');
-        if ('{{ versions.scrutiny }}' == 'scrutiny-collector-metrics version {{ versions.latest }}') {
-            setval('CollectorVersion', '{{ versions.scrutiny }}<br><span class="text-success"><b>You\'re up to date!</b></span>');
-        } else if ('{{ versions.scrutiny }}' != 'not detected') {
-            setval('CollectorVersion', '{{ versions.scrutiny }} (latest - {{ versions.latest }})');
-        } else {
+
+        if ('{{ versions.scrutiny }}' == 'not detected') {
             setval('CollectorVersion', installBtn);
+        } else {
+            let btn = '', colour = 'danger', status = 'An update is available!';
 
-            $('#install').SimpleActionButton({
-                onAction: (data) => {
-                    let val = data['message'];
+            if ('{{ versions.scrutiny }}'.split(' ')[2] != '{{ versions.latest }}') {
+                btn = installBtn.replace('Install', 'Update to').replace('><', ' style="margin-top: 6px;"><');
+            } else {
+                status = "You're up to date!";
+                colour = 'success';
+            }
 
-                    if ('version' in data && data['success']) {
-                        $('#response').html(`<code class="text-info">${data['message'].replaceAll('\n', '<br>')}</code>`);
-                        val = data['version'];
-                    } else {
-                        $('#response').removeClass('alert-info').addClass('alert-danger').text('Install failed.');
-                    }
-
-                    setval('CollectorVersion', val.replaceAll('\n', '<br>'));
-                    $('#response').fadeIn();
-                }
-            });
+            setval('CollectorVersion', `{{ versions.scrutiny }}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
         }
+
+        $('#install').SimpleActionButton({
+            onAction: (data) => {
+                let val = data['message'];
+
+                if ('version' in data && data['success']) {
+                    $('#response').html(`<code class="text-info">${data['message'].replaceAll('\n', '<br>')}</code>`);
+                    val = data['version'];
+                } else {
+                    $('#response').removeClass('alert-info').addClass('alert-danger').text('Install failed.');
+                }
+
+                setval('CollectorVersion', val.replaceAll('\n', '<br>'));
+                $('#response').fadeIn();
+            }
+        });
     });
 })();
 </script>
