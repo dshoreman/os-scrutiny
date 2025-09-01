@@ -10,6 +10,11 @@
         <type>info</type>
     </field>
     <field>
+        <id>scrutiny.settings.CollectorVersion</id>
+        <label>Scrutiny Collector</label>
+        <type>info</type>
+    </field>
+    <field>
         <label>Collector Settings</label>
         <type>header</type>
     </field>

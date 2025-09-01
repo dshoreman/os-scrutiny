@@ -3,6 +3,9 @@
     <mount>//OPNsense/scrutiny</mount>
     <items>
         <settings>
+            <ScrutinyVersion type="TextField" volatile="true">
+                <Default>-</Default>
+            </ScrutinyVersion>
             <SmartVersion type="TextField" volatile="true">
                 <Default>-</Default>
             </SmartVersion>

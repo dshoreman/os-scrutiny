@@ -8,6 +8,7 @@ function setval(opt, val) {
 
     form.done((data) => {
         setval('SmartVersion', '{{ versions.smartctl }}');
+        setval('CollectorVersion', '{{ versions.scrutiny }}');
     });
 })();
 </script>

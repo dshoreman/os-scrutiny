@@ -11,9 +11,24 @@ class SettingsController extends \OPNsense\Base\IndexController
 
         $this->view->form = $this->getForm('settings');
         $this->view->versions = (object) [
-            'smartctl' => trim(shell_exec('{ smartctl -V || echo not installed; } | head -n1')),
+            'scrutiny' => $this->printVersion('scrutiny', 'tail'),
+            'smartctl' => $this->printVersion('smartctl', 'head'),
         ];
 
         $this->view->pick('OPNsense/Scrutiny/settings');
+    }
+
+    private function printVersion(string $binary, string $headOrTail): string
+    {
+        $map = [
+            'scrutiny' => '/opt/scrutiny/bin/collector -v',
+            'smartctl' => 'smartctl -V',
+        ];
+
+        return trim(shell_exec(sprintf(
+            '{ %s || echo not detected; } | %s -n1',
+            $map[$binary],
+            $headOrTail,
+        )));
     }
 }
