@@ -1,5 +1,3 @@
-{{ partial('layout_partials/base_form', ['fields': form, 'id': 'settings']) }}
-
 <script>
 function setval(opt, val) {
     document.getElementById(`scrutiny.settings.${opt}`).innerText = val;
@@ -13,3 +11,7 @@ function setval(opt, val) {
     });
 })();
 </script>
+
+<div class="content-box">
+    {{ partial('layout_partials/base_form', ['fields': form, 'id': 'settings']) }}
+</div>

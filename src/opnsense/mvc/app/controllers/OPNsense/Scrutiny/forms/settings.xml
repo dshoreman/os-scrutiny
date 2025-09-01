@@ -1,9 +1,17 @@
 <?xml version="1.0"?>
 <form>
     <field>
+        <label>Status</label>
+        <type>header</type>
+    </field>
+    <field>
         <id>scrutiny.settings.SmartVersion</id>
         <label>S.M.A.R.T. Version</label>
         <type>info</type>
+    </field>
+    <field>
+        <label>Collector Settings</label>
+        <type>header</type>
     </field>
     <field>
         <id>scrutiny.settings.ApiEndpoint</id>
