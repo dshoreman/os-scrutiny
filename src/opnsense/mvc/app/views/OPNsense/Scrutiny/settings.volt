@@ -10,7 +10,9 @@ function setval(opt, val) {
 
     form.done((data) => {
         setval('SmartVersion', '{{ versions.smartctl }}');
-        if ('{{ versions.scrutiny }}' != 'not detected') {
+        if ('{{ versions.scrutiny }}' == 'scrutiny-collector-metrics version {{ versions.latest }}') {
+            setval('CollectorVersion', '{{ versions.scrutiny }}<br><span class="text-success"><b>You\'re up to date!</b></span>');
+        } else if ('{{ versions.scrutiny }}' != 'not detected') {
             setval('CollectorVersion', '{{ versions.scrutiny }} (latest - {{ versions.latest }})');
         } else {
             setval('CollectorVersion', installBtn);
