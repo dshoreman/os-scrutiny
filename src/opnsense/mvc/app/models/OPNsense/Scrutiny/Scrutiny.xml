@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<model>
+    <mount>//OPNsense/scrutiny</mount>
+    <items>
+        <settings>
+            <ApiEndpoint type="TextField">
+                <Required>Y</Required>
+            </ApiEndpoint>
+            <Debug type="BooleanField">
+                <Default>0</Default>
+            </Debug>
+            <HostID type="TextField" />
+        </settings>
+    </items>
+</model>
