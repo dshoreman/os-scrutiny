@@ -5,13 +5,13 @@ function setval(opt, val) {
 
 (() => {
     const form = mapDataToFormUI({'settings': '/api/scrutiny/settings/get'}),
-    installBtnData = 'data-endpoint="/api/scrutiny/service/download" data-label="Install"',
+    installBtnData = 'data-endpoint="/api/scrutiny/service/download" data-label="Install v{{ versions.latest }}"',
     installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
 
     form.done((data) => {
         setval('SmartVersion', '{{ versions.smartctl }}');
         if ('{{ versions.scrutiny }}' != 'not detected') {
-            setval('CollectorVersion', '{{ versions.scrutiny }}');
+            setval('CollectorVersion', '{{ versions.scrutiny }} (latest - {{ versions.latest }})');
         } else {
             setval('CollectorVersion', installBtn);
 

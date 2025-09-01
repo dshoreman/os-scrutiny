@@ -13,6 +13,7 @@ class SettingsController extends \OPNsense\Base\IndexController
         $this->view->versions = (object) [
             'scrutiny' => $this->printVersion('scrutiny', 'tail'),
             'smartctl' => $this->printVersion('smartctl', 'head'),
+            'latest' => Scrutiny::latestVersion(),
         ];
 
         $this->view->pick('OPNsense/Scrutiny/settings');

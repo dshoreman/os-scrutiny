@@ -3,12 +3,12 @@
 namespace OPNsense\Scrutiny\Api;
 
 use \OPNsense\Base\ApiMutableModelControllerBase;
+use \OPNsense\Scrutiny\Scrutiny;
 
 class ServiceController extends ApiMutableModelControllerBase
 {
     private const BINDIR = '/opt/scrutiny/bin';
     private const OUTFILE = self::BINDIR . '/collector';
-    private const SRCFILE = 'scrutiny-collector-metrics-freebsd-amd64';
 
     protected static $internalModelClass = 'OPNsense\Scrutiny\Scrutiny';
     protected static $internalModelName = 'scrutiny';
@@ -19,16 +19,13 @@ class ServiceController extends ApiMutableModelControllerBase
             return ['message' => 'action unavailable'];
         }
 
-        $ch = curl_init('https://github.com/AnalogJ/scrutiny/releases/latest');
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
-
-        if (!curl_exec($ch)) {
-            return ['message' => 'failed checking latest version'];
+        try {
+            $latest = Scrutiny::latestReleaseLink();
+            $release = Scrutiny::linkFromTagPage($latest);
+            $message = "Latest version found at {$latest}...\n";
+        } catch (\Exception $e) {
+            return ['message' => $e->getMessage()];
         }
-
-        $latest = curl_getinfo($ch, CURLINFO_REDIRECT_URL);
-        $release = str_replace('/tag/', '/download/', $latest) . '/' . self::SRCFILE;
-        $message = "Latest version found at {$latest}...\n";
 
         if (!is_dir(self::BINDIR) && !mkdir(self::BINDIR, recursive: true)) {
             return ['message' => $message . 'Failed creating ' . self::BINDIR];
