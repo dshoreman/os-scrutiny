@@ -46,8 +46,12 @@ class ServiceController extends ApiMutableModelControllerBase
             $message .= shell_exec(sprintf("chmod -vv +x '%s'", self::OUTFILE));
         }
 
+        $canRun = is_executable(self::OUTFILE);
+
         return [
-            'message' => $message . (is_executable(self::OUTFILE) ? 'DONE' : 'ERROR'),
+            'message' => $message . ($canRun ? '[DONE]' : 'Failed setting execute bit.'),
+            'version' => shell_exec(self::OUTFILE . ' -v'),
+            'success' => $canRun,
         ];
     }
 }
