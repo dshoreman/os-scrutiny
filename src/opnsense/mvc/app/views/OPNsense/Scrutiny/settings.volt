@@ -43,7 +43,9 @@ $(document).ready(() => {
         });
     });
 
-    $('#save').click(() => saveFormToEndpoint('/api/scrutiny/settings/set', 'settings'));
+    $('#save').click(() => saveFormToEndpoint( '/api/scrutiny/settings/set', 'settings', () => {
+        ajaxCall('/api/scrutiny/service/reload');
+    }));
 });
 </script>
 

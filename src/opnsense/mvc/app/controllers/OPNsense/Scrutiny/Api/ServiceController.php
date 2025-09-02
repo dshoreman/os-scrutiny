@@ -3,6 +3,7 @@
 namespace OPNsense\Scrutiny\Api;
 
 use \OPNsense\Base\ApiMutableModelControllerBase;
+use \OPNsense\Core\Backend;
 use \OPNsense\Scrutiny\Scrutiny;
 
 class ServiceController extends ApiMutableModelControllerBase
@@ -12,6 +13,17 @@ class ServiceController extends ApiMutableModelControllerBase
 
     protected static $internalModelClass = 'OPNsense\Scrutiny\Scrutiny';
     protected static $internalModelName = 'Scrutiny';
+
+    public function reloadAction(): array
+    {
+        if (!$this->request->isPost()) {
+            return ['status' => 'failed'];
+        }
+
+        return ['status' => trim(
+            (new Backend())->configdRun('template reload OPNsense/Scrutiny')
+        )];
+    }
 
     public function downloadAction(): array
     {

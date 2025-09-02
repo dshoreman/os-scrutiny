@@ -1,0 +1,11 @@
+version: 1
+{% if not helpers.empty('OPNsense.Scrutiny') %}
+{% if not helpers.empty('OPNsense.Scrutiny.settings.api_endpoint') %}
+
+api:
+  endpoint: "{{ OPNsense.Scrutiny.settings.api_endpoint|default('http://localhost:8080') }}"
+{% endif %}
+
+host:
+  id: "{{ OPNsense.Scrutiny.settings.host_id|default('') }}"
+{% endif %}

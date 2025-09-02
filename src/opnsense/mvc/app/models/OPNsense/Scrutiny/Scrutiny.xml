@@ -10,7 +10,10 @@
                 <default>-</default>
             </smart_version>
             <api_endpoint type="TextField">
-                <required>Y</required>
+                <mask>@^https?://([a-z0-9-.])+:([0-9]){1,5}$@</mask>
+                <validationMessage>
+                    Endpoint must include http(s):// and port
+                </validationMessage>
             </api_endpoint>
             <debug type="BooleanField">
                 <default>0</default>
