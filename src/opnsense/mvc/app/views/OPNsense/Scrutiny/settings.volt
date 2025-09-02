@@ -43,19 +43,16 @@ $(document).ready(() => {
         });
     });
 
-    $('#save').click(() => saveFormToEndpoint( '/api/scrutiny/settings/set', 'settings', () => {
-        ajaxCall('/api/scrutiny/service/reload');
-    }));
+    $('#save').prop('type', 'submit').click(() =>
+        saveFormToEndpoint('/api/scrutiny/settings/set', 'settings', () => {
+            ajaxCall('/api/scrutiny/service/reload');
+        })
+    );
 });
 </script>
 
 <div class="alert alert-info" role="alert" style="display: none;" id="response"></div>
 
 <div class="content-box">
-    {{ partial('layout_partials/base_form', ['fields': form, 'id': 'settings']) }}
-    <div class="col-md-12">
-        <button class="btn btn-primary" type="button" id="save">
-            <b>{{ lang._('Save') }}</b>
-        </button>
-    </div>
+    {{ partial('layout_partials/base_form', ['fields': form, 'id': 'settings', 'apply_btn_id': 'save']) }}
 </div>
