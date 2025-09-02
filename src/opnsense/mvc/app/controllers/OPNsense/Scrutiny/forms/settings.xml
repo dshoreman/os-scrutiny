@@ -5,12 +5,12 @@
         <type>header</type>
     </field>
     <field>
-        <id>scrutiny.settings.SmartVersion</id>
+        <id>Scrutiny.settings.smart_version</id>
         <label>S.M.A.R.T. Version</label>
         <type>info</type>
     </field>
     <field>
-        <id>scrutiny.settings.CollectorVersion</id>
+        <id>Scrutiny.settings.collector_version</id>
         <label>Scrutiny Collector</label>
         <type>info</type>
     </field>
@@ -19,19 +19,19 @@
         <type>header</type>
     </field>
     <field>
-        <id>scrutiny.settings.ApiEndpoint</id>
+        <id>Scrutiny.settings.api_endpoint</id>
         <label>API Endpoint</label>
         <hint>http://scrutiny:8080</hint>
         <type>text</type>
     </field>
     <field>
-        <id>scrutiny.settings.HostID</id>
+        <id>Scrutiny.settings.host_id</id>
         <label>Host ID</label>
         <help>Enter a name to identify this machine; used to group disks in Scrutiny.</help>
         <type>text</type>
     </field>
     <field>
-        <id>scrutiny.settings.Debug</id>
+        <id>Scrutiny.settings.debug</id>
         <label>Debug</label>
         <type>checkbox</type>
         <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>

@@ -11,7 +11,7 @@ class ServiceController extends ApiMutableModelControllerBase
     private const OUTFILE = self::BINDIR . '/collector';
 
     protected static $internalModelClass = 'OPNsense\Scrutiny\Scrutiny';
-    protected static $internalModelName = 'scrutiny';
+    protected static $internalModelName = 'Scrutiny';
 
     public function downloadAction(): array
     {

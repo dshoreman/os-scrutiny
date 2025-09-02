@@ -1,18 +1,18 @@
 <script>
 function setval(opt, val) {
-    document.getElementById(`scrutiny.settings.${opt}`).innerHTML = val;
+    document.getElementById(`Scrutiny.settings.${opt}`).innerHTML = val;
 };
 
-(() => {
+$(document).ready(() => {
     const form = mapDataToFormUI({'settings': '/api/scrutiny/settings/get'}),
     installBtnData = 'data-endpoint="/api/scrutiny/service/download" data-label="Install v{{ versions.latest }}"',
     installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
 
     form.done((data) => {
-        setval('SmartVersion', '{{ versions.smartctl }}');
+        setval('smart_version', '{{ versions.smartctl }}');
 
         if ('{{ versions.scrutiny }}' == 'not detected') {
-            setval('CollectorVersion', installBtn);
+            setval('collector_version', installBtn);
         } else {
             let btn = '', colour = 'danger', status = 'An update is available!';
 
@@ -23,7 +23,7 @@ function setval(opt, val) {
                 colour = 'success';
             }
 
-            setval('CollectorVersion', `{{ versions.scrutiny }}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
+            setval('collector_version', `{{ versions.scrutiny }}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
         }
 
         $('#install').SimpleActionButton({
@@ -37,16 +37,23 @@ function setval(opt, val) {
                     $('#response').removeClass('alert-info').addClass('alert-danger').text('Install failed.');
                 }
 
-                setval('CollectorVersion', val.replaceAll('\n', '<br>'));
+                setval('collector_version', val.replaceAll('\n', '<br>'));
                 $('#response').fadeIn();
             }
         });
     });
-})();
+
+    $('#save').click(() => saveFormToEndpoint('/api/scrutiny/settings/set', 'settings'));
+});
 </script>
 
 <div class="alert alert-info" role="alert" style="display: none;" id="response"></div>
 
 <div class="content-box">
     {{ partial('layout_partials/base_form', ['fields': form, 'id': 'settings']) }}
+    <div class="col-md-12">
+        <button class="btn btn-primary" type="button" id="save">
+            <b>{{ lang._('Save') }}</b>
+        </button>
+    </div>
 </div>

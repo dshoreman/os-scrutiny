@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <model>
-    <mount>//OPNsense/scrutiny</mount>
+    <mount>//OPNsense/Scrutiny</mount>
     <items>
         <settings>
-            <ScrutinyVersion type="TextField" volatile="true">
-                <Default>-</Default>
-            </ScrutinyVersion>
-            <SmartVersion type="TextField" volatile="true">
-                <Default>-</Default>
-            </SmartVersion>
-            <ApiEndpoint type="TextField">
-                <Required>Y</Required>
-            </ApiEndpoint>
-            <Debug type="BooleanField">
-                <Default>0</Default>
-            </Debug>
-            <HostID type="TextField" />
+            <collector_version type="TextField" volatile="true">
+                <default>-</default>
+            </collector_version>
+            <smart_version type="TextField" volatile="true">
+                <default>-</default>
+            </smart_version>
+            <api_endpoint type="TextField">
+                <required>Y</required>
+            </api_endpoint>
+            <debug type="BooleanField">
+                <default>0</default>
+            </debug>
+            <host_id type="TextField" />
         </settings>
     </items>
 </model>

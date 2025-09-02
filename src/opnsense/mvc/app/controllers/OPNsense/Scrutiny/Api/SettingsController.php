@@ -7,5 +7,5 @@ use \OPNsense\Base\ApiMutableModelControllerBase;
 class SettingsController extends ApiMutableModelControllerBase
 {
     protected static $internalModelClass = 'OPNsense\Scrutiny\Scrutiny';
-    protected static $internalModelName = 'scrutiny';
+    protected static $internalModelName = 'Scrutiny';
 }
