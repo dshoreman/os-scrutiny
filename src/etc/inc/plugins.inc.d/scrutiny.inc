@@ -2,7 +2,10 @@
 
 function scrutiny_cron()
 {
+    $model = new \OPNsense\Scrutiny\Scrutiny();
+    $args = ('1' === (string) $model->settings->debug) ? 'run --debug' : 'run';
+
     return [
-        ['autocron' => ['/opt/scrutiny/bin/collector run', '*/15']],
+        ['autocron' => [sprintf('/opt/scrutiny/bin/collector %s', $args), '*/15']],
     ];
 }
