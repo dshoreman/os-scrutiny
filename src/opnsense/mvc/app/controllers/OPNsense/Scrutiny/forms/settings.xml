@@ -41,4 +41,10 @@
         <type>checkbox</type>
         <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>
     </field>
+    <field>
+        <id>Scrutiny.settings.syslog</id>
+        <label>Output to syslog</label>
+        <type>checkbox</type>
+        <help><![CDATA[Redirects output to the <b>General</b> system log with messages tagged as <em>scrutiny</em>.]]></help>
+    </field>
 </form>

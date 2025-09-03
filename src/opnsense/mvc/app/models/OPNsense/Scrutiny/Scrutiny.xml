@@ -21,6 +21,9 @@
             <enabled type="BooleanField">
                 <default>0</default>
             </enabled>
+            <syslog type="BooleanField">
+                <default>0</default>
+            </syslog>
             <host_id type="TextField" />
         </settings>
     </items>
