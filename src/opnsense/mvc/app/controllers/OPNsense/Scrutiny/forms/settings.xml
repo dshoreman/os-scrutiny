@@ -1,50 +1,38 @@
 <?xml version="1.0"?>
 <form>
     <field>
-        <label>Status</label>
-        <type>header</type>
-    </field>
-    <field>
-        <id>Scrutiny.settings.smart_version</id>
-        <label>S.M.A.R.T. Version</label>
-        <type>info</type>
-    </field>
-    <field>
-        <id>Scrutiny.settings.collector_version</id>
-        <label>Scrutiny Collector</label>
-        <type>info</type>
-    </field>
-    <field>
-        <label>Collector Settings</label>
-        <type>header</type>
-    </field>
-    <field>
-        <id>Scrutiny.settings.enabled</id>
-        <label>Enable cron</label>
-        <type>checkbox</type>
-    </field>
-    <field>
-        <id>Scrutiny.settings.api_endpoint</id>
+        <id>Scrutiny.api_endpoint</id>
         <label>API Endpoint</label>
+        <help><![CDATA[When left empty, Scrutiny will default to <b>http://localhost:8080:</b>]]></help>
         <hint>http://scrutiny:8080</hint>
         <type>text</type>
     </field>
     <field>
-        <id>Scrutiny.settings.host_id</id>
+        <id>Scrutiny.host_id</id>
         <label>Host ID</label>
         <help>Enter a name to identify this machine; used to group disks in Scrutiny.</help>
         <type>text</type>
     </field>
     <field>
-        <id>Scrutiny.settings.debug</id>
-        <label>Debug</label>
-        <type>checkbox</type>
-        <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>
+        <label>Command Options</label>
+        <type>header</type>
     </field>
     <field>
-        <id>Scrutiny.settings.syslog</id>
-        <label>Output to syslog</label>
+        <id>Scrutiny.enabled</id>
+        <label>Enable collector</label>
+        <help>Adds a root cron that runs the Scrutiny collector command once every 15 minutes.</help>
         <type>checkbox</type>
+    </field>
+    <field>
+        <id>Scrutiny.syslog</id>
+        <label>Output to syslog</label>
         <help><![CDATA[Redirects output to the <b>General</b> system log with messages tagged as <em>scrutiny</em>.]]></help>
+        <type>checkbox</type>
+    </field>
+    <field>
+        <id>Scrutiny.debug</id>
+        <label>Debug mode</label>
+        <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>
+        <type>checkbox</type>
     </field>
 </form>

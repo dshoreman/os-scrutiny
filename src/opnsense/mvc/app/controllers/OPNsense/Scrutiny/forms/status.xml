@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<form>
+    <field>
+        <label>Status</label>
+        <type>header</type>
+    </field>
+    <field>
+        <id>Scrutiny.version.smart</id>
+        <label>S.M.A.R.T. Version</label>
+        <type>info</type>
+    </field>
+    <field>
+        <id>Scrutiny.version.collector</id>
+        <label>Scrutiny Collector</label>
+        <type>info</type>
+    </field>
+</form>

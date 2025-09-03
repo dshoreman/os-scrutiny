@@ -1,6 +1,6 @@
 <script>
-function setval(opt, val) {
-    document.getElementById(`Scrutiny.settings.${opt}`).innerHTML = val;
+function setVersion(opt, val) {
+    document.getElementById(`Scrutiny.version.${opt}`).innerHTML = val;
 };
 
 $(document).ready(() => {
@@ -9,10 +9,10 @@ $(document).ready(() => {
     installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
 
     form.done((data) => {
-        setval('smart_version', '{{ versions.smartctl }}');
+        setVersion('smart', '{{ versions.smartctl }}');
 
         if ('{{ versions.scrutiny }}' == 'not detected') {
-            setval('collector_version', installBtn);
+            setVersion('collector', installBtn);
         } else {
             let btn = '', colour = 'danger', status = 'An update is available!';
 
@@ -23,7 +23,7 @@ $(document).ready(() => {
                 colour = 'success';
             }
 
-            setval('collector_version', `{{ versions.scrutiny }}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
+            setVersion('collector', `{{ versions.scrutiny }}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
         }
 
         $('#install').SimpleActionButton({
@@ -37,7 +37,7 @@ $(document).ready(() => {
                     $('#response').removeClass('alert-info').addClass('alert-danger').text('Install failed.');
                 }
 
-                setval('collector_version', val.replaceAll('\n', '<br>'));
+                setVersion('collector', val.replaceAll('\n', '<br>'));
                 $('#response').fadeIn();
             }
         });
@@ -54,5 +54,8 @@ $(document).ready(() => {
 <div class="alert alert-info" role="alert" style="display: none;" id="response"></div>
 
 <div class="content-box">
-    {{ partial('layout_partials/base_form', ['fields': form, 'id': 'settings', 'apply_btn_id': 'save']) }}
+    {{ partial('layout_partials/base_form', ['fields': statusForm, 'id': 'status']) }}
+</div>
+<div class="content-box __mt">
+    {{ partial('layout_partials/base_form', ['fields': settingsForm, 'id': 'settings', 'apply_btn_id': 'save']) }}
 </div>

@@ -9,11 +9,12 @@ class SettingsController extends \OPNsense\Base\IndexController
         $this->view->title = 'Services: Scrutiny: Settings';
         $this->view->description = 'Configure how the Scrutiny collector runs and logs data.';
 
-        $this->view->form = $this->getForm('settings');
+        $this->view->settingsForm = $this->getForm('settings');
+        $this->view->statusForm = $this->getForm('status');
         $this->view->versions = (object) [
             'scrutiny' => $this->printVersion('scrutiny', 'tail'),
             'smartctl' => $this->printVersion('smartctl', 'head'),
-            'latest' => Scrutiny::latestVersion(),
+            'latest' => Settings::latestVersion(),
         ];
 
         $this->view->pick('OPNsense/Scrutiny/settings');

@@ -11,7 +11,7 @@ class ServiceController extends ApiMutableModelControllerBase
     private const BINDIR = '/opt/scrutiny/bin';
     private const OUTFILE = self::BINDIR . '/collector';
 
-    protected static $internalModelClass = 'OPNsense\Scrutiny\Scrutiny';
+    protected static $internalModelClass = 'OPNsense\Scrutiny\Settings';
     protected static $internalModelName = 'Scrutiny';
 
     public function reloadAction(): array
