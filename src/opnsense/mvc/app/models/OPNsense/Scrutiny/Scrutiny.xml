@@ -18,6 +18,9 @@
             <debug type="BooleanField">
                 <default>0</default>
             </debug>
+            <enabled type="BooleanField">
+                <default>0</default>
+            </enabled>
             <host_id type="TextField" />
         </settings>
     </items>

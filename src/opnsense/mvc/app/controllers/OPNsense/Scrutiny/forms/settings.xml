@@ -19,6 +19,11 @@
         <type>header</type>
     </field>
     <field>
+        <id>Scrutiny.settings.enabled</id>
+        <label>Enable cron</label>
+        <type>checkbox</type>
+    </field>
+    <field>
         <id>Scrutiny.settings.api_endpoint</id>
         <label>API Endpoint</label>
         <hint>http://scrutiny:8080</hint>
