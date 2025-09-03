@@ -20,9 +20,14 @@ class ServiceController extends ApiMutableModelControllerBase
             return ['status' => 'failed'];
         }
 
-        return ['status' => trim(
-            (new Backend())->configdRun('template reload OPNsense/Scrutiny')
-        )];
+        $backend = new Backend();
+        $result = $backend->configdRun('template reload OPNsense/Scrutiny');
+
+        if (trim($result) == 'OK') {
+            $result = $backend->configdRun('cron restart');
+        }
+
+        return ['status' => trim($result)];
     }
 
     public function downloadAction(): array
