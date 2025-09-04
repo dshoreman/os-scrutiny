@@ -4,26 +4,25 @@ function setVersion(opt, val) {
 };
 
 $(document).ready(() => {
-    const form = mapDataToFormUI({'settings': '/api/scrutiny/settings/get'}),
-    installBtnData = 'data-endpoint="/api/scrutiny/service/download" data-label="Install v{{ versions.latest }}"',
-    installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
+    mapDataToFormUI({'settings': '/api/scrutiny/settings/get'});
+    mapDataToFormUI({'status': '/api/scrutiny/status/get'}).done((data) => {
+        const versions = data.settings.Scrutiny.version,
+            installBtnData = `data-endpoint="/api/scrutiny/service/download" data-label="Install v${versions.latest}"`,
+            installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
 
-    form.done((data) => {
-        setVersion('smart', '{{ versions.smartctl }}');
-
-        if ('{{ versions.scrutiny }}' == 'not detected') {
+        if (versions.collector == 'not detected') {
             setVersion('collector', installBtn);
         } else {
             let btn = '', colour = 'danger', status = 'An update is available!';
 
-            if ('{{ versions.scrutiny }}'.split(' ')[2] != '{{ versions.latest }}') {
+            if (versions.collector.split(' ')[2] != versions.latest) {
                 btn = installBtn.replace('Install', 'Update to').replace('><', ' style="margin-top: 6px;"><');
             } else {
                 status = "You're up to date!";
                 colour = 'success';
             }
 
-            setVersion('collector', `{{ versions.scrutiny }}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
+            setVersion('collector', `${versions.collector}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
         }
 
         $('#install').SimpleActionButton({

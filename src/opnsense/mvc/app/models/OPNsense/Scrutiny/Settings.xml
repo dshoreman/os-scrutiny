@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
 <model>
     <mount>//OPNsense/Scrutiny</mount>
+    <version>0.1.0</version>
     <items>
-        <version>
-            <collector type="TextField" volatile="true"><default>-</default></collector>
-            <smart type="TextField" volatile="true"><default>-</default></smart>
-        </version>
         <api_endpoint type="TextField">
             <mask>@^https?://([a-z0-9-.])+:([0-9]){1,5}$@</mask>
             <validationMessage>

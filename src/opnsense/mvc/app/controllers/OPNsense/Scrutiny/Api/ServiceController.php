@@ -2,11 +2,11 @@
 
 namespace OPNsense\Scrutiny\Api;
 
-use \OPNsense\Base\ApiMutableModelControllerBase;
+use \OPNsense\Base\ApiMutableModelControllerBase as BaseController;
 use \OPNsense\Core\Backend;
 use \OPNsense\Scrutiny\Scrutiny;
 
-class ServiceController extends ApiMutableModelControllerBase
+class ServiceController extends BaseController
 {
     private const BINDIR = '/opt/scrutiny/bin';
     private const OUTFILE = self::BINDIR . '/collector';
