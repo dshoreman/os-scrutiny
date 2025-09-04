@@ -1,29 +1,33 @@
 <script>
-function setVersion(opt, val) {
-    document.getElementById(`Scrutiny.version.${opt}`).innerHTML = val;
-};
+const UPDATE_URI = '/api/scrutiny/service/download';
+
+function checkUpdateStatus(status, versions) {
+    const installBtnData = `data-endpoint="${UPDATE_URI}" data-label="Install v${versions.latest}"`,
+        installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
+
+    if (versions.collector == 'not detected') {
+        return status.html(installBtn);
+    } else if (versions.latest == versions.collector.split(' ')[2]) {
+        return status.append(statusText('success', "You're up to date!"));
+    }
+
+    status.append(statusText('danger', 'An update is available!') + '<br>'
+        + installBtn.replace('Install', 'Update to')
+            .replace('><', ' style="margin-top: 6px;"><'));
+}
+
+function statusText(colour, status) {
+    return `<br><span class="text-${colour}"><b>${status}</b></span>`
+}
 
 $(document).ready(() => {
-    mapDataToFormUI({'settings': '/api/scrutiny/settings/get'});
-    mapDataToFormUI({'status': '/api/scrutiny/status/get'}).done((data) => {
-        const versions = data.settings.Scrutiny.version,
-            installBtnData = `data-endpoint="/api/scrutiny/service/download" data-label="Install v${versions.latest}"`,
-            installBtn = `<button id="install" class="btn btn-xs btn-primary" ${installBtnData}></button>`;
+    mapDataToFormUI({
+        'status': '/api/scrutiny/status/get',
+        'settings': '/api/scrutiny/settings/get'
+    }).done((data) => {
+        const status = $('span[id="Scrutiny.version.collector"]');
 
-        if (versions.collector == 'not detected') {
-            setVersion('collector', installBtn);
-        } else {
-            let btn = '', colour = 'danger', status = 'An update is available!';
-
-            if (versions.collector.split(' ')[2] != versions.latest) {
-                btn = installBtn.replace('Install', 'Update to').replace('><', ' style="margin-top: 6px;"><');
-            } else {
-                status = "You're up to date!";
-                colour = 'success';
-            }
-
-            setVersion('collector', `${versions.collector}<br><span class="text-${colour}"><b>${status}</b></span><br>${btn}`);
-        }
+        checkUpdateStatus(status, data.status.Scrutiny.version);
 
         $('#install').SimpleActionButton({
             onAction: (data) => {
@@ -36,7 +40,7 @@ $(document).ready(() => {
                     $('#response').removeClass('alert-info').addClass('alert-danger').text('Install failed.');
                 }
 
-                setVersion('collector', val.replaceAll('\n', '<br>'));
+                status.html(val.replaceAll('\n', '<br>'));
                 $('#response').fadeIn();
             }
         });
