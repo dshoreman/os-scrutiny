@@ -64,7 +64,7 @@ class ServiceController extends BaseController
 
         return [
             'message' => $message . ($canRun ? '[DONE]' : 'Failed setting execute bit.'),
-            'version' => shell_exec(self::OUTFILE . ' -v'),
+            'version' => trim(shell_exec(self::OUTFILE . ' -v')),
             'success' => $canRun,
         ];
     }
