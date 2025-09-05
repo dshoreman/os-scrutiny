@@ -14,12 +14,6 @@
         <type>text</type>
     </field>
     <field>
-        <id>Scrutiny.log.file</id>
-        <label>Log file</label>
-        <help><![CDATA[Where to write logs; leave blank to disable file logging. Paths can be absolute or relative.<br><b>Note:</b> Paths are relative to the working directory. For the cron, that's <em>/root</em>. If you run the collector in a shell, it might not be.]]></help>
-        <type>text</type>
-    </field>
-    <field>
         <label>Command Options</label>
         <type>header</type>
     </field>
@@ -40,5 +34,21 @@
         <label>Debug mode</label>
         <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>
         <type>checkbox</type>
+    </field>
+    <field>
+        <label>Logging</label>
+        <type>header</type>
+    </field>
+    <field>
+        <id>Scrutiny.log.level</id>
+        <label>Log level</label>
+        <help><![CDATA[Controls which logs to output, regardless of whether that's to file, syslog or stdout. When set to <em>None</em>, Scrutiny will use its default <b>Info</b> level.]]></help>
+        <type>dropdown</type>
+    </field>
+    <field>
+        <id>Scrutiny.log.file</id>
+        <label>Log file</label>
+        <help><![CDATA[Where to write chosen logs. Paths can be absolute or relative.<br><b>Note:</b> Paths are relative to the working directory. For the cron, that's <em>/root</em>. If you run the collector in a shell, it might not be.]]></help>
+        <type>text</type>
     </field>
 </form>

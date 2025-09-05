@@ -8,9 +8,14 @@ api:
 
 host:
   id: "{{ OPNsense.Scrutiny.host_id|default('') }}"
-{% if not helpers.empty('OPNsense.Scrutiny.log.file') %}
+{% if not helpers.empty('OPNsense.Scrutiny.log') %}
 
 log:
+{% if not helpers.empty('OPNsense.Scrutiny.log.file') %}
   file: "{{ OPNsense.Scrutiny.log.file }}"
+{% endif %}
+{% if not helpers.empty('OPNsense.Scrutiny.log.level') %}
+  level: "{{ OPNsense.Scrutiny.log.level }}"
+{% endif %}
 {% endif %}
 {% endif %}

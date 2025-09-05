@@ -12,6 +12,14 @@
         <host_id type="TextField" />
         <log>
             <file type="TextField" />
+            <level type="OptionField">
+                <OptionValues>
+                    <error value="error">Errors only</error>
+                    <warning value="warning">Errors and warnings</warning>
+                    <info value="info">Errors, warnings and info messages</info>
+                    <debug value="debug">Errors, warnings, info and debug messages</debug>
+                </OptionValues>
+            </level>
         </log>
         <enabled type="BooleanField">
             <default>0</default>
