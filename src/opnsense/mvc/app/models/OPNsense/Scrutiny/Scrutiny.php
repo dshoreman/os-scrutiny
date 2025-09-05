@@ -2,9 +2,7 @@
 
 namespace OPNsense\Scrutiny;
 
-use \OPNsense\Base\BaseModel;
-
-class Scrutiny extends BaseModel
+class Scrutiny
 {
     private const LATEST_URI = 'https://github.com/AnalogJ/scrutiny/releases/latest';
     private const SRCFILE = 'scrutiny-collector-metrics-freebsd-amd64';
