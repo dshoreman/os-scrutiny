@@ -10,23 +10,26 @@
         <type>checkbox</type>
     </field>
     <field>
-        <id>Scrutiny.debug</id>
-        <label>Debug mode</label>
-        <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>
-        <type>checkbox</type>
+        <id>Scrutiny.api_endpoint</id>
+        <label>API Endpoint</label>
+        <advanced>true</advanced>
+        <help><![CDATA[When left empty, Scrutiny will default to <b>http://localhost:8080:</b>]]></help>
+        <hint>http://scrutiny:8080</hint>
+        <type>text</type>
     </field>
     <field>
         <id>Scrutiny.host_id</id>
         <label>Host ID</label>
+        <advanced>true</advanced>
         <help>Enter a name to identify this machine; used to group disks in Scrutiny.</help>
         <type>text</type>
     </field>
     <field>
-        <id>Scrutiny.api_endpoint</id>
-        <label>API Endpoint</label>
-        <help><![CDATA[When left empty, Scrutiny will default to <b>http://localhost:8080:</b>]]></help>
-        <hint>http://scrutiny:8080</hint>
-        <type>text</type>
+        <id>Scrutiny.debug</id>
+        <label>Debug mode</label>
+        <advanced>true</advanced>
+        <help><![CDATA[Whether to enable debug output (the equivalent of passing <code>--debug</code> to the collector).]]></help>
+        <type>checkbox</type>
     </field>
     <field>
         <label>Logging</label>
@@ -47,6 +50,7 @@
     <field>
         <id>Scrutiny.syslog</id>
         <label>Output to syslog</label>
+        <advanced>true</advanced>
         <help><![CDATA[Redirects output to the <b>General</b> system log with messages tagged as <em>scrutiny</em>.]]></help>
         <type>checkbox</type>
     </field>
