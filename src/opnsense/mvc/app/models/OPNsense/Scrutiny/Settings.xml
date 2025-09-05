@@ -13,10 +13,17 @@
             <file type="TextField" />
             <level type="OptionField">
                 <OptionValues>
-                    <error value="error">Errors only</error>
-                    <warning value="warning">Errors and warnings</warning>
-                    <info value="info">Errors, warnings and info messages</info>
-                    <debug value="debug">Errors, warnings, info and debug messages</debug>
+                    <core value="Used by Scrutiny">
+                        <error value="error">Errors only</error>
+                        <warning value="warning">Errors and warnings</warning>
+                        <info value="info">Errors, warnings and info messages</info>
+                        <debug value="debug">Errors, warnings, info and debug messages</debug>
+                    </core>
+                    <other value="Unused (but useful)">
+                        <trace value="trace">Trace (log everything)</trace>
+                        <fatal value="fatal">Fatal</fatal>
+                        <panic value="panic">Panic (log almost nothing)</panic>
+                    </other>
                 </OptionValues>
             </level>
         </log>
