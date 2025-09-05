@@ -8,4 +8,9 @@ api:
 
 host:
   id: "{{ OPNsense.Scrutiny.host_id|default('') }}"
+{% if not helpers.empty('OPNsense.Scrutiny.log.file') %}
+
+log:
+  file: "{{ OPNsense.Scrutiny.log.file }}"
+{% endif %}
 {% endif %}

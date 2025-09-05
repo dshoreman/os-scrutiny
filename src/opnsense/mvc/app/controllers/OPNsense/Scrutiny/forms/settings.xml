@@ -14,6 +14,12 @@
         <type>text</type>
     </field>
     <field>
+        <id>Scrutiny.log.file</id>
+        <label>Log file</label>
+        <help><![CDATA[Where to write logs; leave blank to disable file logging. Paths can be absolute or relative.<br><b>Note:</b> Paths are relative to the working directory. For the cron, that's <em>/root</em>. If you run the collector in a shell, it might not be.]]></help>
+        <type>text</type>
+    </field>
+    <field>
         <label>Command Options</label>
         <type>header</type>
     </field>

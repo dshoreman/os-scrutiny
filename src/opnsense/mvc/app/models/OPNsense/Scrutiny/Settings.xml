@@ -9,15 +9,18 @@
                 Endpoint must include http(s):// and port
             </validationMessage>
         </api_endpoint>
-        <debug type="BooleanField">
-            <default>0</default>
-        </debug>
+        <host_id type="TextField" />
+        <log>
+            <file type="TextField" />
+        </log>
         <enabled type="BooleanField">
             <default>0</default>
         </enabled>
         <syslog type="BooleanField">
             <default>0</default>
         </syslog>
-        <host_id type="TextField" />
+        <debug type="BooleanField">
+            <default>0</default>
+        </debug>
     </items>
 </model>
